@@ -2,6 +2,6 @@ package com.vatsal.translator_kmm.core.domain.util
 
 import kotlinx.coroutines.flow.StateFlow
 
-class CommonStateFlow<T>(
+actual class CommonStateFlow<T> actual constructor(
     private val flow: StateFlow<T>
 ) : StateFlow<T> by flow
