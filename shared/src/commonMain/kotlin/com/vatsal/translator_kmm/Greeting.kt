@@ -3,7 +3,7 @@ package com.vatsal.translator_kmm
 class Greeting {
     private val platform: Platform = getPlatform()
 
-    fun greet(): String {
+    fun greeting(): String {
         return "Hello, ${platform.name}!"
     }
 }
