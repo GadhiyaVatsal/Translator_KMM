@@ -16,7 +16,7 @@ actual class UiLanguage(
 
         actual val allLanguage: List<UiLanguage>
             get() = Language.values().map { language ->
-                com.vatsal.translator_kmm.translate.presentation.UiLanguage(
+                UiLanguage(
                     language = language,
                     imageName = language.langName.lowercase()
                 )
