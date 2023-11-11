@@ -10,11 +10,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.FabPosition
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -31,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import com.vatsal.translator_kmm.android.R
 import com.vatsal.translator_kmm.android.translate.presentation.components.LanguageDropDown
 import com.vatsal.translator_kmm.android.translate.presentation.components.SwapLanguagesButton
+import com.vatsal.translator_kmm.android.translate.presentation.components.TranslateHistoryItem
 import com.vatsal.translator_kmm.android.translate.presentation.components.TranslateTextField
 import com.vatsal.translator_kmm.android.translate.presentation.components.rememberTextToSpeech
 import com.vatsal.translator_kmm.translate.domain.translate.TranslateError
@@ -125,6 +128,7 @@ fun TranslateScreen(
                     )
                 }
             }
+
             item {
                 val clipboardManager = LocalClipboardManager.current
                 val keyboardController = LocalSoftwareKeyboardController.current
@@ -170,6 +174,27 @@ fun TranslateScreen(
                     },
                     onTextFieldClick = {
                         onEvent(TranslateEvent.EditTranslation)
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+
+            item {
+                if (state.history.isNotEmpty()) {
+                    Text(
+                        text = stringResource(
+                            id = R.string.history
+                        ),
+                        style = MaterialTheme.typography.h2
+                    )
+                }
+            }
+
+            items(state.history) { item ->
+                TranslateHistoryItem(
+                    item = item,
+                    onClick = {
+                        onEvent(TranslateEvent.SelectHistoryItem(item))
                     },
                     modifier = Modifier.fillMaxWidth()
                 )
