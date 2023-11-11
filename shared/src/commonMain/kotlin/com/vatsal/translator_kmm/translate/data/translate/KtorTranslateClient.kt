@@ -23,8 +23,10 @@ class KtorTranslateClient(
         toLanguage: Language
     ): String {
         val result = try {
+
+            print("API CALL")
             httpClient.post {
-                url("https://transalte.pl-coding.com" + "/translate")
+                url("https://translate.pl-coding.com/translate")
                 contentType(ContentType.Application.Json)
                 setBody(
                     TranslateDto(
@@ -34,6 +36,7 @@ class KtorTranslateClient(
                     )
                 )
             }
+
         }catch (e: IOException){
             throw TranslateException(TranslateError.SERVER_ERROR)
         }
@@ -44,6 +47,9 @@ class KtorTranslateClient(
             in 400..499 -> throw TranslateException(TranslateError.CLIENT_ERROR)
             else -> throw TranslateException(TranslateError.UNKNOWN_ERROR)
         }
+
+        print("RESULT")
+        print(result.body<TranslatedDto>().translatedText)
 
         return try {
             result.body<TranslatedDto>().translatedText

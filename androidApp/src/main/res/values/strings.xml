@@ -4,4 +4,13 @@
     <string name="open">Open</string>
     <string name="swap_languages">Swap Languages</string>
     <string name="record_audio">Record Audio</string>
+    <string name="copy">Copy</string>
+    <string name="play_loud">Play Loud</string>
+    <string name="enter_a_text_to_translate">Enter a text to translate</string>
+    <string name="translate">Translate</string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
+    <string name="error_service_unavailable">Error service unavailable</string>
+    <string name="client_error">Client error</string>
+    <string name="server_error">Server error</string>
+    <string name="unknown_error">Unknown error</string>
 </resources>
