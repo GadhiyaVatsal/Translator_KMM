@@ -8,4 +8,6 @@ data class TranslateDto(
     @SerialName("q") val textToTranslate: String,
     @SerialName("source") val sourceLanguageCode : String,
     @SerialName("target") val targetLanguageCode: String,
+    val format: String = "text",
+    val api_key: String = ""
 )
