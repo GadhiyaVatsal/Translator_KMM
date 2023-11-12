@@ -7,13 +7,43 @@
 //
 
 import SwiftUI
+import shared
 
 struct LanguageDropDown: View {
+    var language: UiLanguage
+    var isOpen: Bool
+    var selectLanguage: (UiLanguage) -> Void
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Menu {
+            VStack {
+                ForEach(UiLanguage.Companion().allLanguage, id: \.self.language.langCode) { language in
+                    LanguageDropDownItem(
+                        language: language,
+                        onClick: {
+                            selectLanguage(language)
+                        }
+                    )
+                }
+            }
+        } label: {
+            HStack {
+                SmallLanguageIcon(language: language)
+                Text(language.language.langName)
+                    .foregroundColor(.lightBlue)
+                Image(systemName: isOpen ? "chevron.up" : "chevron.down")
+                    .foregroundColor(.lightBlue)
+            }
+        }
     }
 }
 
-#Preview {
-    LanguageDropDown()
+struct LanguageDropDown_Previews: PreviewProvider {
+    static var previews: some View {
+        LanguageDropDown(
+            language: UiLanguage(language: .hindi, imageName: "hindi"),
+            isOpen: true,
+            selectLanguage: { language in }
+        )
+    }
 }

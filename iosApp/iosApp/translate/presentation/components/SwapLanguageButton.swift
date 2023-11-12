@@ -9,11 +9,21 @@
 import SwiftUI
 
 struct SwapLanguageButton: View {
+    var onClick: () -> Void
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: onClick) {
+            Image(uiImage: UIImage(named: "swap_languages")!)
+                .padding()
+                .background(Color.primaryColor)
+                .clipShape(Circle())
+        }
     }
 }
 
-#Preview {
-    SwapLanguageButton()
+struct SwapLanguageButton_Previews: PreviewProvider {
+    static var previews: some View {
+        SwapLanguageButton(
+            onClick: {}
+        )
+    }
 }

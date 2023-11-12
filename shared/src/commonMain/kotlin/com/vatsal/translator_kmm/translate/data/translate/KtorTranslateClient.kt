@@ -26,7 +26,8 @@ class KtorTranslateClient(
 
             print("API CALL")
             httpClient.post {
-                url("https://libretranslate.com/translate")
+                //https://libretranslate.com/translate
+                url("https://translate.pl-coding.com/translate")
                 contentType(ContentType.Application.Json)
                 setBody(
                     TranslateDto(

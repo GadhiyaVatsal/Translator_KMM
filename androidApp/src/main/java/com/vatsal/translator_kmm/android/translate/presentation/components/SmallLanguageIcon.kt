@@ -9,8 +9,7 @@ import com.vatsal.translator_kmm.core.presentation.UiLanguage
 
 @Composable
 fun SmallLanguageIcon(
-    language: UiLanguage,
-    modifier: Modifier = Modifier
+    language: UiLanguage
 ) {
     AsyncImage(
         model = language.drawableRes,
